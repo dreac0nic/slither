@@ -68,6 +68,6 @@ tools will be CSS and HTML. Ajax and jQuery will both be used to provide an inte
 experience with the website.
 
 ### Asset Tools
- - Atom.io :heart:
+ - Atom.io <3
  - GIMP
  - Krita
