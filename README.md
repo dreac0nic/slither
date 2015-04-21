@@ -54,6 +54,9 @@ plus a star marked on their name. After the game is complete, other factors such
 number of turns, most efficient routes, etc will be taken into account to produce
 a final, ranked score.
 
+**NOTE: The rules, especially regarding scoring, may change through future development
+and these notations may not represent the game's future or current states.**
+
 ## Tools, Languages, and Libraries!
 Slither is primarily written in Ruby with Ruby on Rails. "Snake" itself will be
 written in JavaScript using the HTML Canvas with other HTML5 support. Other obvious
