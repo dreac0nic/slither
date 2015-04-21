@@ -20,6 +20,10 @@ or your biggest rivals!
 Stop living in the past, and join the rest of your friends on Slither!
 
 ## Features
+
+Please note that Slither is still under heavy development, so be kind with our
+severe lack of features!
+
 ### Current
 
 None yet, check back later to see our progress!
