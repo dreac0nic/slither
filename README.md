@@ -36,6 +36,23 @@ None yet, check back later to see our progress!
  - Recorded demos of gameplay.
  - View of past demos of yours and friends!
  - Customized game assets: customize your Snake with your collected Slither-points: "Hisses!"
+ - Expand the arena when the player reaches a certain length. (_Constaints?_)
+
+### Snake
+The implementation of Snake will be very similar to the classic addition seen in
+most phone libraries. The player controls a constantly-moving snake and must collect
+the "dots" in the arena without colliding with a segment of themselves nor the walls
+of the arena. With every dot that is collected, the player grows in length.
+The goal of the game is to achieve the highest score.
+
+#### Point Scoring
+Points are accumulated over time. A multiplier is applied to the score with every
+dot that is collected the multiplier is increased. The player is also given a small
+bonus (after the multiplier has been applied) for collecting a dot. If the player
+is able to fill the arena (this inevitably losing), they will be given a small bonus,
+plus a star marked on their name. After the game is complete, other factors such as
+number of turns, most efficient routes, etc will be taken into account to produce
+a final, ranked score.
 
 ## Tools, Languages, and Libraries!
 Slither is primarily written in Ruby with Ruby on Rails. "Snake" itself will be
