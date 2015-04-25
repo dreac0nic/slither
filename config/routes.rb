@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'pages/home'
+
+  get 'pages/about'
+
+  get 'pages/index'
+
+  get 'pages/home'
+
+  get 'pages/about'
+
   resources :posts
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
