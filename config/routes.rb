@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
   root :to => "users#new"
 
+  get "log_in" => "session#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
 
+  resources :sessions
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
