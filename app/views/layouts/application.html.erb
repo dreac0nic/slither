@@ -7,6 +7,10 @@
 </head>
 <body>
 
+<% flash.each do |name, message| %>
+<%= content_tag :dv, message, :id => "flash_#{name}" %>
+<% end %>
+
 <%= yield %>
 
 </body>
