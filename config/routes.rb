@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   root :to => "users#new"
 
   get "sign_up" => "users#new", :as => "sign_up"
