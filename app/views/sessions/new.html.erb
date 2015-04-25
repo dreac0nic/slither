@@ -3,7 +3,7 @@
 <%= form_tag sessions_path do %>
 <div class="login_form">
 	<p><%= label_tag :handle %> <%= text_field_tag :handle, params[:handle] %></p>
-	<p><%= label_tag :password %> <%= text_field_tag :password, params[:password] %></p>
+	<p><%= label_tag :password %> <%= password_field_tag :password, params[:password] %></p>
 
 	<p class="button"><%= submit_tag %></p>
 </div>
