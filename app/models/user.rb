@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 	validates_presence_of :email
 	validates_uniqueness_of :email
 
+	has_many :posts
+
 	def self.authenticate(handle, password)
 		user = find_by_handle(handle)
 
