@@ -1,3 +1,5 @@
+<p><%= link_to 'New Post', new_post_path %></p>
+
 <div id="posts">
   <% @posts.each do |post| %>
   <div class="post">
@@ -6,5 +8,3 @@
   </div>
   <% end %>
 </div>
-
-<p><%= link_to 'New Post', new_post_path %></p>
