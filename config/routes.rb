@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  get 'pages/home'
+  root :to => "pages#home"
 
-  get 'pages/game'
+  # Static page routing.
+  get "home" => "pages#home", :as => "home"
+  get "game" => "pages#game", :as => "game"
+  get "snake" => "pages#game", :as => "snake"
 
   # User account login/creation.
   get "login" => "sessions#new", :as => "login"
