@@ -3,11 +3,10 @@ Rails.application.routes.draw do
 
   get 'pages/game'
 
-  root :to => "users#new"
-
-  get "log_in" => "sessions#new", :as => "log_in"
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "sign_up" => "users#new", :as => "sign_up"
+  # User account login/creation.
+  get "login" => "sessions#new", :as => "login"
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "signup" => "users#new", :as => "signup"
 
   resources :sessions
   resources :users
