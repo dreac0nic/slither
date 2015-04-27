@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'pages/home'
+
+  get 'pages/game'
+
   root :to => "users#new"
 
   get "log_in" => "sessions#new", :as => "log_in"
