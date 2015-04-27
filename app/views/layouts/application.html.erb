@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Slither</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Slither</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="header">
+      <h1>SLITHER</h1>
 
-<div id="user_navigation">
-  <p>
-    <% if current_user %>
-    Logged in as <%= current_user.handle %>.
-    <%= link_to "Log Out", logout_path %>
-    <% else %>
-    <%= link_to "Sign Up", signup_path %> or
-    <%= link_to "Log In", login_path %>.
+      <div class="user_navigation">
+        <% if current_user %>
+        <img src="" width="64" height="64" />
+        <p><%= current_user.handle %></p>
+        <%= link_to "logout", logout_path %>
+        <% else %>
+        <p>You are not logged in, please <%= link_to "signup", signup_path %> or <%= link_to "login", login_path %> to join the SLITHER community!</p>
+        <% end %>
+      </div>
+
+      <div id="play_button">
+        <p>PLAY</p>
+      </div>
+    </div>
+
+    <% flash.each do |name, message| %>
+    <%= content_tag :dv, message, :id => "flash_#{name}" %>
     <% end %>
-  </p>
-</div>
 
-<% flash.each do |name, message| %>
-<%= content_tag :dv, message, :id => "flash_#{name}" %>
-<% end %>
-
-<%= yield %>
-
-</body>
+    <div id="content">
+      <%= yield %>
+    </div>
+  </body>
 </html>
