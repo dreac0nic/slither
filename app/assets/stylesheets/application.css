@@ -135,7 +135,7 @@ body {
   background: #eb4f00;
   color: #ffd4c3;
 
-  box-shadow: 2px 2px #2d140a;
+  box-shadow: 1px 1px 1px 1px #2d140a;
 
   font-family: "Open Sans", Sans;
   font-size: 4em;
@@ -155,16 +155,12 @@ body {
 }
 
 #play_button a:hover {
-  left: -1px; top: -1px;
-
-  color: #fd754c;
+  left: 3px; top: 2px;
+  color: #ff9b8a;
 }
 
 #play_button:hover {
-  right: 6px; bottom: 2px;
-  border-right: 1px solid #2d140a;
-  border-bottom: 1px solid #2d140a;
-  box-shadow: -2px -2px #2d140a;
+  box-shadow: inset 3px 2px #2d140a;
 }
 
 #content {
