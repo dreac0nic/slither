@@ -3,8 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #game {
+	padding: 8px 2px;
+
 	text-align: center;
 }
 
 #snake-canvas {
+	border-radius: 4px;
 }
