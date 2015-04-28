@@ -25,7 +25,7 @@ body {
   margin: 0px;
   padding: 0px;
 
-  background: #e8dbd3;
+  background: #FF8449;
 }
 
 #flash-message-container {
@@ -168,7 +168,9 @@ body {
 }
 
 #content > div {
-  background: #df266a;
+  background: #eff6ff;
 
-  border-radius: 8px;
+  border-radius: 3px;
+
+  box-shadow: 1px 2px #516377;
 }
