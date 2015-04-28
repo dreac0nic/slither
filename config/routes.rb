@@ -11,8 +11,10 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "signup" => "users#new", :as => "signup"
 
+  # User viewership stuff.
+  get "hisser/:handle" => "users#show", :as => "user"
+
   resources :sessions
-  resources :users
   resources :posts
 
   # The priority is based upon order of creation: first created -> highest priority.
