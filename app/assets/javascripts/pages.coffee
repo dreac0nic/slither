@@ -118,7 +118,7 @@ class Game
 		@snake = new Snake(new Point(@width/2, @height/2))
 
 	run: (context) ->
-		switch "game"
+		switch @state
 			when "menu" then console.log("MENU")
 			when "game"
 				@snake.direction = @input_direction
