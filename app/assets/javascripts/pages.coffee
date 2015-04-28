@@ -76,70 +76,59 @@ class Snake
 			@segments.pop()
 			@segments.unshift(this.head().add(this.nextPosition()))
 
-class SnakeInputController
-	constructor: (element, callback) ->
-		@inputs = []
-		@lefts = [97, 38]
-		@rights = [100, 40]
-		@ups = [119, 37]
-		@downs = [115, 39]
-
-		element.onkeydown = (event) -> this.key_down(event)
-		element.onkeyup = (event) -> this.key_up(event)
-
-	find_key: (key_code) ->
-		if key_code in @lefts
-			"left"
-		else if key_code in @rights
-			"right"
-		else if key_code in @ups
-			"up"
-		else if key_code in @downs
-			"down"
-
-	key_down: (event) ->
-		input = find_key(event.which || event.keyCode)
-
-		if not input in @inputs
-			@inputs.push(input)
-			callback(input)
-
-	key_up: (event) ->
-		input = find_key(event.which || event.keyCode)
-		@inputs.splice(@inputs.indexOf(input), 1) if input in @inputs
-
 class Game
-	constructor: (element, @width = 48, @height = 42, @size = 10) ->
-		@key_controller = new SnakeInputController(element, (pressed_key) -> @input_direction = pressed_key)
+	constructor: (canvas, @width = 48, @height = 42, @size = 10) ->
+		@input_direction = "right"
 
+		@context = canvas.getContext("2d")
 		@state = "menu"
 
 		@dots = []
 		@snake = new Snake(new Point(@width/2, @height/2))
 
-	run: (context) ->
+
+	tick: (context) ->
+		console.log("TICK")
+
+		# Clear screen.
+		context.beginPath()
+		context.rect(0, 0, @width*@size, @height*@size)
+		context.closePath()
+		context.fillStyle = "black"
+		context.fill()
+
 		switch @state
 			when "menu" then console.log("MENU")
 			when "game"
+				console.log(@input_direction)
 				@snake.direction = @input_direction
 				@snake.update(this)
 				@snake.draw(context, @size)
 			when "gameover" then console.log("GAME OVER")
 
+	update: () ->
+		# Update based on state!
+
+	draw: (context) ->
+		# Draw based on state.
+
 
 $ ->
-	context = document.getElementById("snake-canvas").getContext("2d")
+	canvas = document.getElementById("snake-canvas")
+	context = canvas.getContext("2d") if canvas?
 
-	mySnake = new Snake(new Point(0, 0), 10)
+	game_instance = new Game(canvas)
+	game_instance.state = "game"
 
-	for i in [0...1000]
-		directions = ["up", "down", "left", "right"]
-		mySnake.direction = directions[Math.floor(Math.random()*4)]
-		mySnake.update()
+	document.onkeydown = (data) ->
+		key_code = data.keyCode
 
-	context.beginPath()
-	context.rect(0, 0, 420, 480)
-	context.closePath()
-	context.fillStyle = "black"
-	context.fill()
-	mySnake.draw(context)
+		switch key_code
+			when 40 then game_instance.input_direction = "up"
+			when 38 then game_instance.input_direction = "down"
+			when 37 then game_instance.input_direction = "left"
+			when 39 then game_instance.input_direction = "right"
+
+	setInterval () ->
+		game_instance.tick(context)
+	, 50
