@@ -19,10 +19,12 @@ class Snake
 	constructor: (spawn_pos, length = 5, @direction = "right") ->
 		@segments = []
 		@alive = true
-		@previousDirection = @direction
+		@previous_direction = @direction
 
 		for i in [0...length]
 			@segments.push(new Point(spawn_pos.x, spawn_pos.y))
+
+		@old_segment = this.tail()
 
 	head: () ->
 		@segments[0]
@@ -59,58 +61,60 @@ class Snake
 			when "right" then "left"
 
 	draw: (context, size = 10) ->
+		context.fillStyle = "black"
+		context.fillRect(@old_segment.x*size, @old_segment.y*size, size, size)
+
 		for segment in @segments
-			context.beginPath()
-			context.rect(segment.x*size, segment.y*size, size, size)
-			context.closePath()
 			context.fillStyle = "white"
-			context.fill()
+			context.fillRect(segment.x*size, segment.y*size, size, size)
 
 	update: (game) ->
-		@direction = @lastDirection if @direction == this.oppositeDirection(@lastDirection)
+		@direction = @previous_direction if @direction == this.oppositeDirection(@previous_direction)
 
 		if false
 			@alive = false
 		else
-			@lastDirection = @direction
-			@segments.pop()
+			@previous_direction = @direction
+			@old_segment = @segments.pop()
 			@segments.unshift(this.head().add(this.nextPosition()))
 
 class Game
-	constructor: (canvas, @width = 48, @height = 42, @size = 10) ->
+	constructor: (canvas, @width = 42, @height = 48, @size = 10) ->
 		@input_direction = "right"
 
 		@context = canvas.getContext("2d")
+		@first_draw = true
 		@state = "menu"
 
 		@dots = []
-		@snake = new Snake(new Point(@width/2, @height/2))
+		@snake = new Snake(new Point(Math.floor(@width/2), Math.floor(@height/2)))
 
+		@context.fillStyle = "black"
+		@context.fillRect(0, 0, @width*@size, @height*@size)
 
 	tick: (context) ->
 		console.log("TICK")
 
-		# Clear screen.
-		context.beginPath()
-		context.rect(0, 0, @width*@size, @height*@size)
-		context.closePath()
-		context.fillStyle = "black"
-		context.fill()
+		this.update()
+		this.draw(context)
 
+	update: () ->
 		switch @state
 			when "menu" then console.log("MENU")
 			when "game"
-				console.log(@input_direction)
 				@snake.direction = @input_direction
 				@snake.update(this)
-				@snake.draw(context, @size)
 			when "gameover" then console.log("GAME OVER")
 
-	update: () ->
-		# Update based on state!
-
 	draw: (context) ->
-		# Draw based on state.
+		context.fillStyle = "black"
+		context.fillRect(0, 0, @width*@size, @height*@size) if @first_draw
+
+		switch @state
+			when "game"
+				@snake.draw(context)
+
+		@first_draw = false
 
 
 $ ->
@@ -131,4 +135,4 @@ $ ->
 
 	setInterval () ->
 		game_instance.tick(context)
-	, 50
+	, 40
