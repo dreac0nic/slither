@@ -26,7 +26,8 @@ severe lack of features!
 
 ### Current
 
-None yet, check back later to see our progress!
+ - User accounts, enabling login/logout and signup w/ secure password management.
+ - Pulling gravatar images for profile pictures via given email.
 
 ### In-Progress
  - The classic Nokia game, Snake!, playable right in your browser!
