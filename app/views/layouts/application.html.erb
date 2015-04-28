@@ -6,27 +6,31 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <ul id="flash-message-container">
+      <% flash.each do |name, message| %>
+      <li class="flash-message"><%= content_tag :dv, message, :id => "flash_#{name}" %></li>
+      <% end %>
+    </ul>
+
     <div id="header">
       <h1>SLITHER</h1>
 
-      <div class="user_navigation">
+      <div id="user_navigation">
         <% if current_user %>
-        <img src="" width="64" height="64" />
-        <p><%= current_user.handle %></p>
-        <%= link_to "logout", logout_path %>
+        <img src="http://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(current_user.email) %>" width="64" height="64" />
+        <div id="account_info">
+          <p class="username"><%= current_user.handle %></p>
+          <p>LOL YOU'RE A GREAT USER GUY. GOOD STUFF! <%= link_to "logout", logout_path %></p>
+        </div>
         <% else %>
-        <p>You are not logged in, please <%= link_to "signup", signup_path %> or <%= link_to "login", login_path %> to join the SLITHER community!</p>
+        <p style="text-align: center;">You are not logged in, please <%= link_to "signup", signup_path %> or <%= link_to "login", login_path %> to join the SLITHER community!</p>
         <% end %>
       </div>
 
       <div id="play_button">
-        <p>PLAY</p>
+        <%= link_to "PLAY", controller: "pages", action: "game" %>
       </div>
     </div>
-
-    <% flash.each do |name, message| %>
-    <%= content_tag :dv, message, :id => "flash_#{name}" %>
-    <% end %>
 
     <div id="content">
       <%= yield %>

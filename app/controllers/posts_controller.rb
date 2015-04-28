@@ -34,7 +34,7 @@ class PostsController < ApplicationController
 		if current_user
 			@user = current_user
 		else
-			redirect_to root_url, :notice => "You must be signed in to use that!"
+			redirect_to root_url, notice: "You must be signed in to use that!"
 		end
 	end
 

@@ -14,6 +14,8 @@
  *= require_self
  */
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700|Luckiest+Guy);
+
 html {
   margin: 0px;
   padding: 0px;
@@ -22,16 +24,113 @@ html {
 body {
   margin: 0px;
   padding: 0px;
+
   background: #e8dbd3;
 }
 
+#flash-message-container {
+  display: none;
+}
+
 #header {
-  background: #228d30;
-  color: #0c5019;
+  position: relative;
+
+  height: 220px;
 
   margin-top: 0px;
   padding: 4px 10px;
   border-bottom: 14px solid #103312;
+
+  background: #228d30;
+}
+
+#header h1 {
+  position: absolute;
+  left: 0px; bottom: -32px;
+
+  padding: 2px 4px;
+  margin: 0px;
+
+  color: #196923;
+
+  font-family: "Luckiest Guy", "Open Sans", Sans;
+  font-size: 10em;
+  font-weight: 900;
+
+  text-shadow: 2px 2px #114b15;
+}
+
+#user_navigation {
+  width: 500px;
+  height: 65px;
+
+  border: 1px solid #b3b3bb;
+  border-radius: 6px;
+  padding: 4px 8px;
+
+  background: #e4f6f5;
+}
+
+#user_navigation img {
+  float: left;
+
+  border-radius: 4px;
+}
+
+#user_navigation #account_info {
+  margin-left: 74px;
+}
+
+#user_navigation #account_info p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.username {
+  font-family: "Open Sans", Sans;
+  font-bold: 900;
+
+  color: #311c69;
+}
+
+#play_button {
+  position: absolute;
+  right: 8px; top: 4px;
+
+  padding: 0px;
+  border-radius: 4px;
+
+  background: #eb4f00;
+  color: #ffd4c3;
+
+  box-shadow: 2px 2px #2d140a;
+
+  font-family: "Open Sans", Sans;
+  font-size: 4em;
+  font-weight: bold;
+
+  text-align: center;
+}
+
+#play_button a {
+  position: relative;
+
+  padding: 2px 24px;
+
+  color: #ffd4c3;
+
+  text-decoration: none;
+}
+
+#play_button a:hover {
+  left: -1px; top: -1px;
+
+  color: #fd754c;
+}
+
+#play_button:hover {
+  right: 6px; top: 6px;
+  box-shadow: -2px -2px #2d140a;
 }
 
 #content {
