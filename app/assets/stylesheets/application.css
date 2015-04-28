@@ -130,10 +130,18 @@ body {
 
 #play_button:hover {
   right: 6px; top: 6px;
+  border-right: 1px solid #2d140a;
+  border-bottom: 1px solid #2d140a;
   box-shadow: -2px -2px #2d140a;
 }
 
 #content {
   width: 800px;
   margin: 12px auto;
+}
+
+#content > div {
+  background: #df266a;
+
+  border-radius: 8px;
 }
