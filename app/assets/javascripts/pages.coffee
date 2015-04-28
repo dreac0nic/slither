@@ -76,8 +76,55 @@ class Snake
 			@segments.pop()
 			@segments.unshift(this.head().add(this.nextPosition()))
 
+class SnakeInputController
+	constructor: (element, callback) ->
+		@inputs = []
+		@lefts = [97, 38]
+		@rights = [100, 40]
+		@ups = [119, 37]
+		@downs = [115, 39]
+
+		element.onkeydown = (event) -> this.key_down(event)
+		element.onkeyup = (event) -> this.key_up(event)
+
+	find_key: (key_code) ->
+		if key_code in @lefts
+			"left"
+		else if key_code in @rights
+			"right"
+		else if key_code in @ups
+			"up"
+		else if key_code in @downs
+			"down"
+
+	key_down: (event) ->
+		input = find_key(event.which || event.keyCode)
+
+		if not input in @inputs
+			@inputs.push(input)
+			callback(input)
+
+	key_up: (event) ->
+		input = find_key(event.which || event.keyCode)
+		@inputs.splice(@inputs.indexOf(input), 1) if input in @inputs
+
 class Game
-	constructor: (@context, @width = 48, @height = 42, @size = 10) ->
+	constructor: (element, @width = 48, @height = 42, @size = 10) ->
+		@key_controller = new SnakeInputController(element, (pressed_key) -> @input_direction = pressed_key)
+
+		@state = "menu"
+
+		@dots = []
+		@snake = new Snake(new Point(@width/2, @height/2))
+
+	run: (context) ->
+		switch "game"
+			when "menu" then console.log("MENU")
+			when "game"
+				@snake.direction = @input_direction
+				@snake.update(this)
+				@snake.draw(context, @size)
+			when "gameover" then console.log("GAME OVER")
 
 
 $ ->
