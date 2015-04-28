@@ -14,7 +14,7 @@
  *= require_self
  */
 
-@import url(http://fonts.googleapis.com/css?family=Khula:400,700|Exo:400,600,700,400italic,700italic|Open+Sans:700|Luckiest+Guy);
+@import url(http://fonts.googleapis.com/css?family=Ravi+Prakash|Khula:400,700|Exo:400,600,700,400italic,700italic|Open+Sans:700|Luckiest+Guy);
 
 html {
   margin: 0px;
@@ -116,10 +116,13 @@ body {
 }
 
 .username {
-  font-family: "Open Sans", Sans;
+  font-family: "Ravi Prakash", "Open Sans", Sans;
+  font-size: 1.15em;
   font-bold: 900;
 
-  color: #311c69;
+  text-shadow: 1px 1px #301313;
+
+  color: #ab2727;
 }
 
 #play_button {
