@@ -171,6 +171,7 @@ body {
 #content > div {
   background: #eff6ff;
 
+  margin: 10px 0px;
   border-radius: 3px;
   padding: 8px 4px;
 
