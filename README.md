@@ -65,7 +65,7 @@ and these notations may not represent the game's future or current states.**
 ## Tools, Languages, and Libraries!
 Slither is primarily written in Ruby with Ruby on Rails. "Snake" itself will be
 written in JavaScript using the HTML Canvas with other HTML5 support. Other obvious
-tools will be CSS and HTML. Ajax and jQuery will both be used to provide an interactive
+tools will be CSS and HTML. Ajax, jQuery, and CoffeeScript will both be used to provide an interactive
 experience with the website.
 
 ### Asset Tools
