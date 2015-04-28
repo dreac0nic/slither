@@ -14,7 +14,7 @@
  *= require_self
  */
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:700|Luckiest+Guy);
+@import url(http://fonts.googleapis.com/css?family=Exo:400,600,700,400italic,700italic|Open+Sans:700|Luckiest+Guy);
 
 html {
   margin: 0px;
@@ -29,8 +29,35 @@ body {
 }
 
 #flash-message-container {
-  display: none;
+  position: fixed;
+  z-index: 100;
+  width: 20%;
+
+  margin: 0px 40%;
+  padding: 0px;
+
+  list-style-type: none;
 }
+
+.flash-message {
+  margin: 4px 0px;
+  border-radius: 6px;
+  padding: 2px 4px;
+
+  background: #c034d0;
+  color: #f8f0f8;
+
+  font-family: "Exo", Sans;
+  font-size: 0.8em;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.flash-message:first-child {
+  margin-top: 2px;
+}
+
 
 #header {
   position: relative;
@@ -95,7 +122,7 @@ body {
 
 #play_button {
   position: absolute;
-  right: 8px; top: 4px;
+  right: 8px; bottom: 4px;
 
   padding: 0px;
   border-radius: 4px;
@@ -129,7 +156,7 @@ body {
 }
 
 #play_button:hover {
-  right: 6px; top: 6px;
+  right: 6px; bottom: 2px;
   border-right: 1px solid #2d140a;
   border-bottom: 1px solid #2d140a;
   box-shadow: -2px -2px #2d140a;
