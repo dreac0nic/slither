@@ -250,33 +250,34 @@ class Game
 
 		@first_draw = false
 
+window.onload = () ->
+	setTimeout () ->
+		canvas = document.getElementById("snake-canvas")
+		context = canvas.getContext("2d") if canvas?
 
-$ ->
-	canvas = document.getElementById("snake-canvas")
-	context = canvas.getContext("2d") if canvas?
+		game_instance = new Game(canvas)
 
-	game_instance = new Game(canvas)
+		canvas.onclick = () ->
+			game_instance.continue = true
 
-	canvas.onclick = () ->
-		game_instance.continue = true
+		document.onkeydown = (data) ->
+			key_code = data.keyCode
 
-	document.onkeydown = (data) ->
-		key_code = data.keyCode
+			switch key_code
+				when 83 then game_instance.input_direction = "up"
+				when 40 then game_instance.input_direction = "up"
+				when 87 then game_instance.input_direction = "down"
+				when 38 then game_instance.input_direction = "down"
+				when 65 then game_instance.input_direction = "left"
+				when 37 then game_instance.input_direction = "left"
+				when 68 then game_instance.input_direction = "right"
+				when 39 then game_instance.input_direction = "right"
+				when 32 then game_instance.continue = true
+				else return true
 
-		switch key_code
-			when 83 then game_instance.input_direction = "up"
-			when 40 then game_instance.input_direction = "up"
-			when 87 then game_instance.input_direction = "down"
-			when 38 then game_instance.input_direction = "down"
-			when 65 then game_instance.input_direction = "left"
-			when 37 then game_instance.input_direction = "left"
-			when 68 then game_instance.input_direction = "right"
-			when 39 then game_instance.input_direction = "right"
-			when 32 then game_instance.continue = true
-			else return true
+			false
 
-		false
-
-	setInterval () ->
-		game_instance.tick(context)
-	, 40
+		setInterval () ->
+			game_instance.tick(context)
+		, 40
+	, 3000
