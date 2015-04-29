@@ -251,10 +251,10 @@ class Game
 		@first_draw = false
 
 window.onload = () ->
-	setTimeout () ->
-		canvas = document.getElementById("snake-canvas")
-		context = canvas.getContext("2d") if canvas?
+	canvas = document.getElementById("snake-canvas")
+	context = canvas.getContext("2d") if canvas?
 
+	if canvas? and context?
 		game_instance = new Game(canvas)
 
 		canvas.onclick = () ->
@@ -274,10 +274,8 @@ window.onload = () ->
 				when 39 then game_instance.input_direction = "right"
 				when 32 then game_instance.continue = true
 				else return true
-
 			false
 
 		setInterval () ->
 			game_instance.tick(context)
 		, 40
-	, 3000
