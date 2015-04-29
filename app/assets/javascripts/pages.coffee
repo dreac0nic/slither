@@ -209,13 +209,13 @@ class Game
 				context.fillStyle = "black"
 				context.fillRect(0, 0, @width*@size, @height*@size)
 
-				context.font = "128px VT323";
+				context.font = "128px VT323"
 				context.textAlign = "center"
 				context.fillStyle = "white"
 				context.fillText("SNAKE", (@width*@size)/2, (@height*@size)/2 - 120)
 
-				context.font = "18px VT323";
-				context.fillText("Press \"space\" to play.", (@width*@size)/2, (@height*@size)/2 - 40)
+				context.font = "18px VT323"
+				context.fillText("Click anywhere or press \"space\" to play.", (@width*@size)/2, (@height*@size)/2 - 40)
 
 			when "game"
 				# Draw the collectables!
