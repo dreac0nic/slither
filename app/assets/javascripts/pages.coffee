@@ -163,7 +163,7 @@ class Game
 						this.bumpMultiplier()
 
 				# If enough time has passed, decay the multiplier
-				if (new Date()).getTime() - @collect_time > 2750
+				if (new Date()).getTime() - @collect_time > (2000 + 50*@collected)
 					@collect_time = (new Date()).getTime()
 					this.decayMultiplier()
 
