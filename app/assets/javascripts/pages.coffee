@@ -234,9 +234,13 @@ $ ->
 		key_code = data.keyCode
 
 		switch key_code
+			when 83 then game_instance.input_direction = "up"
 			when 40 then game_instance.input_direction = "up"
+			when 87 then game_instance.input_direction = "down"
 			when 38 then game_instance.input_direction = "down"
+			when 65 then game_instance.input_direction = "left"
 			when 37 then game_instance.input_direction = "left"
+			when 68 then game_instance.input_direction = "right"
 			when 39 then game_instance.input_direction = "right"
 			when 32 then game_instance.continue = true
 			else return true
