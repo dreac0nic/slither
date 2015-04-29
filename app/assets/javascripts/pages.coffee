@@ -193,7 +193,12 @@ class Game
 				# Update UI elements.
 				document.getElementById("points").innerHTML = "" + @score
 				document.getElementById("multiplier").innerHTML = "x" + @multipliers[@multipliers.length - 1]
-			when "gameover" then console.log("GAME OVER")
+			when "gameover"
+				if @continue
+					this.reset()
+					@state = "game"
+					@continue = false
+					@first_draw = true
 
 	draw: (context) ->
 		context.fillStyle = "black"
@@ -220,6 +225,28 @@ class Game
 
 				# Draw the snake!
 				@snake.draw(context)
+
+			when "gameover"
+				context.fillStyle = "black"
+				context.fillRect(0, 0, @width*@size, @height*@size)
+
+				context.textAlign = "center"
+				context.fillStyle = "white"
+				context.font = "88px VT323"
+				context.fillText("Game Over", (@width*@size)/2, (@height*@size)/2 - 120)
+
+				context.font = "24px VT323"
+				context.textAlign = "left"
+				context.fillText("collected", 88, (@height*@size)/2)
+				context.fillText("score", 88, (@height*@size)/2 + 32)
+
+				context.textAlign = "right"
+				context.fillText("" + @collected, @width*@size - 88, (@height*@size)/2)
+				context.fillText("" + @score, @width*@size - 88, (@height*@size)/2 + 32)
+
+				context.font = "18px VT323"
+				context.textAlign = "center"
+				context.fillText("Click anywhere or press \"space\" to play again!", (@width*@size)/2, @height*@size - 24)
 
 		@first_draw = false
 
