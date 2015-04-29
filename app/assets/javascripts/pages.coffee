@@ -209,9 +209,12 @@ class Game
 				context.fillStyle = "black"
 				context.fillRect(0, 0, @width*@size, @height*@size)
 
-				context.font = "128px VT323"
+				context.font = "12px VT323"
 				context.textAlign = "center"
 				context.fillStyle = "white"
+				context.fillText("RD BEST PONE", (@width*@size)/2, -20)
+
+				context.font = "128px VT323"
 				context.fillText("SNAKE", (@width*@size)/2, (@height*@size)/2 - 120)
 
 				context.font = "18px VT323"
