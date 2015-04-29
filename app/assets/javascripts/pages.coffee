@@ -15,6 +15,9 @@ class Point
 
 		next
 
+	to_s: () ->
+		"(" + @x + ", " + @y + ")"
+
 class Snake
 	constructor: (spawn_pos, length = 5, @direction = "right") ->
 		@segments = []
@@ -31,6 +34,10 @@ class Snake
 
 	tail: () ->
 		@tail[@segments.length - 1]
+
+	grow: () ->
+		console.log("GROW!!")
+		@segments.push(this.tail)
 
 	occupies: (location) ->
 		result = false
@@ -79,7 +86,7 @@ class Snake
 			@segments.unshift(this.head().add(this.nextPosition()))
 
 class Game
-	constructor: (canvas, @width = 42, @height = 48, @size = 10) ->
+	constructor: (canvas, @width = 42, @height = 48, @size = 10, @dot_quota = 1) ->
 		@input_direction = "right"
 
 		@context = canvas.getContext("2d")
@@ -102,6 +109,14 @@ class Game
 		switch @state
 			when "menu" then console.log("MENU")
 			when "game"
+				@dots.push(new Point(Math.floor(Math.random()*@width), Math.floor(Math.random()*@height))) if @dots.length < @dot_quota
+
+				for dot in @dots
+					if @snake.occupies dot
+						@snake.grow()
+						@dots.splice(@dots.indexOf(dot), 1)
+
+
 				@snake.direction = @input_direction
 				@snake.update(this)
 			when "gameover" then console.log("GAME OVER")
@@ -112,6 +127,12 @@ class Game
 
 		switch @state
 			when "game"
+				# Draw the collectables!
+				context.fillStyle = "red"
+				for dot in @dots
+					context.fillRect(dot.x*@size, dot.y*@size, @size, @size)
+
+				# Draw the snake!
 				@snake.draw(context)
 
 		@first_draw = false
