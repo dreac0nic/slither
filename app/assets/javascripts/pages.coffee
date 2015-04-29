@@ -4,6 +4,11 @@
 
 class Point
 	constructor: (@x = 0, @y = 0) ->
+		if typeof @x is "object"
+			other = @x
+
+			@x = other.x
+			@y = other.y
 
 	equals: (other) ->
 		@x == other.x and @y == other.y
@@ -19,7 +24,7 @@ class Point
 		"(" + @x + ", " + @y + ")"
 
 class Snake
-	constructor: (spawn_pos, length = 5, @direction = "right") ->
+	constructor: (spawn_pos, length = 15, @direction = "right") ->
 		@segments = []
 		@alive = true
 		@previous_direction = @direction
@@ -36,8 +41,7 @@ class Snake
 		@tail[@segments.length - 1]
 
 	grow: () ->
-		console.log("GROW!!")
-		@segments.push(this.tail)
+		@segments.push(new Point(this.tail()))
 
 	occupies: (location) ->
 		result = false
@@ -58,7 +62,7 @@ class Snake
 			when "right" then next.x = 1
 			when "left" then next.x = -1
 
-		next
+		this.head().add(next)
 
 	oppositeDirection: (targetDirection) ->
 		switch targetDirection
@@ -75,15 +79,18 @@ class Snake
 			context.fillStyle = "white"
 			context.fillRect(segment.x*size, segment.y*size, size, size)
 
-	update: (game) ->
+	update: () ->
 		@direction = @previous_direction if @direction == this.oppositeDirection(@previous_direction)
 
-		if false
+		# Test for death!
+		if this.occupies(this.nextPosition())
 			@alive = false
-		else
+
+		# Move the snake if it's still alive!
+		if @alive
 			@previous_direction = @direction
 			@old_segment = @segments.pop()
-			@segments.unshift(this.head().add(this.nextPosition()))
+			@segments.unshift(this.nextPosition())
 
 class Game
 	constructor: (canvas, @width = 42, @height = 48, @size = 10, @dot_quota = 1) ->
@@ -100,8 +107,6 @@ class Game
 		@context.fillRect(0, 0, @width*@size, @height*@size)
 
 	tick: (context) ->
-		console.log("TICK")
-
 		this.update()
 		this.draw(context)
 
@@ -109,6 +114,7 @@ class Game
 		switch @state
 			when "menu" then console.log("MENU")
 			when "game"
+				@state = "gameover" if not @snake.alive
 				@dots.push(new Point(Math.floor(Math.random()*@width), Math.floor(Math.random()*@height))) if @dots.length < @dot_quota
 
 				for dot in @dots
@@ -116,9 +122,12 @@ class Game
 						@snake.grow()
 						@dots.splice(@dots.indexOf(dot), 1)
 
-
 				@snake.direction = @input_direction
-				@snake.update(this)
+				@snake.update()
+
+				# Make sure the snake has not left the arena
+				if @snake.head().x < 0 or @snake.head().y < 0 or @snake.head().x >= @width or @snake.head().y >= @height
+					@snake.alive = false
 			when "gameover" then console.log("GAME OVER")
 
 	draw: (context) ->
