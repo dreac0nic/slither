@@ -24,7 +24,7 @@ class Point
 		"(" + @x + ", " + @y + ")"
 
 class Snake
-	constructor: (spawn_pos, length = 15, @direction = "right") ->
+	constructor: (spawn_pos, length = 5, @direction = "right") ->
 		@segments = []
 		@alive = true
 		@previous_direction = @direction
@@ -133,7 +133,8 @@ class Game
 		@multipliers.push(first + second)
 
 	decayMultiplier: () ->
-		@multipliers.pop()
+		if @multipliers.length > 2
+			@multipliers.pop()
 
 
 	addScore: (points) ->
@@ -146,6 +147,7 @@ class Game
 				@state = "gameover" if not @snake.alive
 				@dots.push(new Point(Math.floor(Math.random()*@width), Math.floor(Math.random()*@height))) if @dots.length < @dot_quota
 
+				# Test to see if the snake has grabbed a dot!
 				for dot in @dots
 					if @snake.occupies dot
 						@snake.grow()
@@ -153,9 +155,15 @@ class Game
 
 						# Add to score
 						@collected += 1
+						@collect_time = (new Date()).getTime()
 
 						this.addScore(250*@collected)
 						this.bumpMultiplier()
+
+				# If enough time has passed, decay the multiplier
+				if (new Date()).getTime() - @collect_time > 2750
+					@collect_time = (new Date()).getTime()
+					this.decayMultiplier()
 
 				# Add score over time.
 				if @last_time > 0
@@ -166,14 +174,16 @@ class Game
 				else
 					@last_time = (new Date()).getTime()
 
-				document.getElementById("score").innerHTML = "SCORE: " + @score
-
 				@snake.direction = @input_direction
 				@snake.update()
 
 				# Make sure the snake has not left the arena
 				if @snake.head().x < 0 or @snake.head().y < 0 or @snake.head().x >= @width or @snake.head().y >= @height
 					@snake.alive = false
+
+				# Update UI elements.
+				document.getElementById("points").innerHTML = "" + @score
+				document.getElementById("multiplier").innerHTML = "x" + @multipliers[@multipliers.length - 1]
 			when "gameover" then console.log("GAME OVER")
 
 	draw: (context) ->
