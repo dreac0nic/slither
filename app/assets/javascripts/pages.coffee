@@ -274,6 +274,7 @@ window.onload = () ->
 				when 39 then game_instance.input_direction = "right"
 				when 32 then game_instance.continue = true
 				else return true
+
 			false
 
 		setInterval () ->
