@@ -142,7 +142,9 @@ class Game
 
 	update: () ->
 		switch @state
-			when "menu" then console.log("MENU")
+			when "menu" then console.log("yeah...")
+
+
 			when "game"
 				@state = "gameover" if not @snake.alive
 				@dots.push(new Point(Math.floor(Math.random()*@width), Math.floor(Math.random()*@height))) if @dots.length < @dot_quota
@@ -191,6 +193,18 @@ class Game
 		context.fillRect(0, 0, @width*@size, @height*@size) if @first_draw
 
 		switch @state
+			when "menu"
+				context.fillStyle = "black"
+				context.fillRect(0, 0, @width*@size, @height*@size)
+
+				context.font = "128px VT323";
+				context.textAlign = "center"
+				context.fillStyle = "white"
+				context.fillText("SNAKE", (@width*@size)/2, (@height*@size)/2 - 120)
+
+				context.font = "18px VT323";
+				context.fillText("Click anywhere to play.", (@width*@size)/2, (@height*@size)/2 - 40)
+
 			when "game"
 				# Draw the collectables!
 				context.fillStyle = "red"
@@ -208,7 +222,6 @@ $ ->
 	context = canvas.getContext("2d") if canvas?
 
 	game_instance = new Game(canvas)
-	game_instance.state = "game"
 
 	document.onkeydown = (data) ->
 		key_code = data.keyCode
