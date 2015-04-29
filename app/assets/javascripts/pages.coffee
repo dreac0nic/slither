@@ -102,8 +102,7 @@ class Game
 
 		@score = 0
 		@collected = 0
-		@multiplier = 1
-		@last_multiplier = 1
+		@multipliers = [1, 1]
 
 		@dots = []
 		@snake = new Snake(new Point(Math.floor(@width/2), Math.floor(@height/2)))
@@ -115,8 +114,9 @@ class Game
 	reset: () ->
 		@score = 0
 		@collected = 0
-		@multiplier = 1
-		@last_multiplier = 1
+		@multipliers = [1, 1]
+
+		@collect_time = -1;
 
 		@last_time = -1
 
@@ -126,12 +126,18 @@ class Game
 		@first_draw = true
 
 	bumpMultiplier: () ->
-		temp = @multiplier
-		@multiplier = @multiplier + @last_multiplier
-		@last_multiplier = @multiplier
+		size = @multipliers.length
+		first = @multipliers[size - 1]
+		second = @multipliers[size - 2]
+
+		@multipliers.push(first + second)
+
+	decayMultiplier: () ->
+		@multipliers.pop()
+
 
 	addScore: (points) ->
-		@score += @multiplier*points
+		@score += Math.floor(@multipliers[@multipliers.length - 1]*points)
 
 	update: () ->
 		switch @state
@@ -151,10 +157,10 @@ class Game
 						this.addScore(250*@collected)
 						this.bumpMultiplier()
 
-
+				# Add score over time.
 				if @last_time > 0
 					new_time = (new Date()).getTime()
-					this.addScore(Math.floor((new_time - @last_time)/25))
+					this.addScore((new_time - @last_time)/25)
 
 					@last_time = new_time
 				else
