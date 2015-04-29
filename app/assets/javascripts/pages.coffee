@@ -230,6 +230,9 @@ $ ->
 
 	game_instance = new Game(canvas)
 
+	canvas.onclick = () ->
+		game_instance.continue = true
+
 	document.onkeydown = (data) ->
 		key_code = data.keyCode
 
