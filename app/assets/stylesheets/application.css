@@ -14,18 +14,20 @@
  *= require_self
  */
 
-@import url(http://fonts.googleapis.com/css?family=Exo:400,600,700,400italic,700italic|Open+Sans:700|Luckiest+Guy);
+@import url(http://fonts.googleapis.com/css?family=Ravi+Prakash|Khula:400,700|Exo:400,600,700,400italic,700italic|Open+Sans:700|Luckiest+Guy);
 
 html {
   margin: 0px;
   padding: 0px;
+
+  font-family: "Khula", "Exo", "Open Sans", Sans;
 }
 
 body {
   margin: 0px;
   padding: 0px;
 
-  background: #e8dbd3;
+  background: #FF8449;
 }
 
 #flash-message-container {
@@ -114,10 +116,13 @@ body {
 }
 
 .username {
-  font-family: "Open Sans", Sans;
+  font-family: "Ravi Prakash", "Open Sans", Sans;
+  font-size: 1.15em;
   font-bold: 900;
 
-  color: #311c69;
+  text-shadow: 1px 1px #301313;
+
+  color: #ab2727;
 }
 
 #play_button {
@@ -130,7 +135,7 @@ body {
   background: #eb4f00;
   color: #ffd4c3;
 
-  box-shadow: 2px 2px #2d140a;
+  box-shadow: 1px 1px 1px 1px #2d140a;
 
   font-family: "Open Sans", Sans;
   font-size: 4em;
@@ -150,16 +155,12 @@ body {
 }
 
 #play_button a:hover {
-  left: -1px; top: -1px;
-
-  color: #fd754c;
+  left: 3px; top: 2px;
+  color: #ff9b8a;
 }
 
 #play_button:hover {
-  right: 6px; bottom: 2px;
-  border-right: 1px solid #2d140a;
-  border-bottom: 1px solid #2d140a;
-  box-shadow: -2px -2px #2d140a;
+  box-shadow: inset 3px 2px #2d140a;
 }
 
 #content {
@@ -168,7 +169,11 @@ body {
 }
 
 #content > div {
-  background: #df266a;
+  background: #eff6ff;
 
-  border-radius: 8px;
+  margin: 10px 0px;
+  border-radius: 3px;
+  padding: 8px 4px;
+
+  box-shadow: 1px 2px #516377;
 }

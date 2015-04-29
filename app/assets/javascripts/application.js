@@ -14,7 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(".flash-message").fadeOut(2000);
 
-//fadeout flash messages
-//$(".flash-message").delay(500).fadeIn("normal", function() { $(this).delay(2500).fadeOut(); });
+// Fade flash messages on appearance.
+$(document).ready(function() {
+	$(".flash-message").delay(500).fadeIn("normal", function() {
+		$(this).delay(2500).fadeOut();
+	});
+});

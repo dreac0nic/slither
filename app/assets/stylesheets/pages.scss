@@ -1,3 +1,40 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700,900|Nova+Mono|Share+Tech+Mono|VT323);
+
+#game {
+	position: relative;
+
+	text-align: center;
+}
+
+.score {
+	position: relative;
+	width: 420px;
+
+	margin: 2px auto;
+
+	font-family: "Source Code Pro", "Open Sans", monospace;
+	font-weight: 700;
+	font-size: 1.5em;
+}
+
+.score h4 {
+	float: left;
+
+	margin: 0px;
+	padding: 2px 0px;
+}
+
+.score p {
+	margin: 0px;
+	padding: 0px;
+
+	text-align: right;
+}
+
+#snake-canvas {
+	border-radius: 4px;
+}
