@@ -232,6 +232,8 @@ $ ->
 			when 37 then game_instance.input_direction = "left"
 			when 39 then game_instance.input_direction = "right"
 
+		false
+
 	setInterval () ->
 		game_instance.tick(context)
 	, 40
