@@ -99,6 +99,7 @@ class Game
 		@context = canvas.getContext("2d")
 		@first_draw = true
 		@state = "menu"
+		@continue = false
 
 		@score = 0
 		@collected = 0
@@ -142,11 +143,17 @@ class Game
 
 	update: () ->
 		switch @state
-			when "menu" then console.log("yeah...")
-
+			when "menu"
+				if @continue
+					@state = "game"
+					@continue = false
+					@first_draw = true
 
 			when "game"
-				@state = "gameover" if not @snake.alive
+				if not @snake.alive
+					@continue = false
+					@state = "gameover"
+
 				@dots.push(new Point(Math.floor(Math.random()*@width), Math.floor(Math.random()*@height))) if @dots.length < @dot_quota
 
 				# Test to see if the snake has grabbed a dot!
@@ -203,7 +210,7 @@ class Game
 				context.fillText("SNAKE", (@width*@size)/2, (@height*@size)/2 - 120)
 
 				context.font = "18px VT323";
-				context.fillText("Click anywhere to play.", (@width*@size)/2, (@height*@size)/2 - 40)
+				context.fillText("Press \"space\" to play.", (@width*@size)/2, (@height*@size)/2 - 40)
 
 			when "game"
 				# Draw the collectables!
@@ -231,6 +238,8 @@ $ ->
 			when 38 then game_instance.input_direction = "down"
 			when 37 then game_instance.input_direction = "left"
 			when 39 then game_instance.input_direction = "right"
+			when 32 then game_instance.continue = true
+			else return true
 
 		false
 
