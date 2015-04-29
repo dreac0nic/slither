@@ -100,15 +100,38 @@ class Game
 		@first_draw = true
 		@state = "menu"
 
+		@score = 0
+		@collected = 0
+		@multiplier = 1
+		@last_multiplier = 1
+
 		@dots = []
 		@snake = new Snake(new Point(Math.floor(@width/2), Math.floor(@height/2)))
-
-		@context.fillStyle = "black"
-		@context.fillRect(0, 0, @width*@size, @height*@size)
 
 	tick: (context) ->
 		this.update()
 		this.draw(context)
+
+	reset: () ->
+		@score = 0
+		@collected = 0
+		@multiplier = 1
+		@last_multiplier = 1
+
+		@last_time = -1
+
+		@snake = new Snake(new Point(Math.floor(@width/2), Math.floor(@height/2)))
+		@dots = []
+
+		@first_draw = true
+
+	bumpMultiplier: () ->
+		temp = @multiplier
+		@multiplier = @multiplier + @last_multiplier
+		@last_multiplier = @multiplier
+
+	addScore: (points) ->
+		@score += @multiplier*points
 
 	update: () ->
 		switch @state
@@ -121,6 +144,23 @@ class Game
 					if @snake.occupies dot
 						@snake.grow()
 						@dots.splice(@dots.indexOf(dot), 1)
+
+						# Add to score
+						@collected += 1
+
+						this.addScore(250*@collected)
+						this.bumpMultiplier()
+
+
+				if @last_time > 0
+					new_time = (new Date()).getTime()
+					this.addScore(Math.floor((new_time - @last_time)/25))
+
+					@last_time = new_time
+				else
+					@last_time = (new Date()).getTime()
+
+				document.getElementById("score").innerHTML = "SCORE: " + @score
 
 				@snake.direction = @input_direction
 				@snake.update()
