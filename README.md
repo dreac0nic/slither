@@ -26,7 +26,8 @@ severe lack of features!
 
 ### Current
 
-None yet, check back later to see our progress!
+ - User accounts, enabling login/logout and signup w/ secure password management.
+ - Pulling gravatar images for profile pictures via given email.
 
 ### In-Progress
  - The classic Nokia game, Snake!, playable right in your browser!
@@ -64,7 +65,7 @@ and these notations may not represent the game's future or current states.**
 ## Tools, Languages, and Libraries!
 Slither is primarily written in Ruby with Ruby on Rails. "Snake" itself will be
 written in JavaScript using the HTML Canvas with other HTML5 support. Other obvious
-tools will be CSS and HTML. Ajax and jQuery will both be used to provide an interactive
+tools will be CSS and HTML. Ajax, jQuery, and CoffeeScript will both be used to provide an interactive
 experience with the website.
 
 ### Asset Tools
