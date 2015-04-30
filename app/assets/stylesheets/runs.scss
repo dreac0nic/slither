@@ -1,3 +1,46 @@
 // Place all the styles related to the runs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.highscores {
+	width: 400px;
+
+	margin: 4px auto;
+
+	color: #380e61;
+
+	font-weight: 700;
+
+	border-spacing: 0px;
+}
+
+.highscores tr:first-child td:first-child {
+	border-radius: 4px 0px 0px 0px;
+}
+
+.highscores tr:first-child td:last-child {
+	border-radius: 0px 4px 0px 0px;
+}
+
+.highscores tr:last-child td:last-child {
+	border-radius: 0px 0px 4px 0px;
+}
+
+.highscores tr:last-child td:first-child {
+	border-radius: 0px 0px 0px 4px;
+}
+
+.highscores tr td {
+	background: #b2c9f9;
+
+	text-align: center;
+}
+
+.highscores tr:nth-child(even) td {
+	background: #7a9ef5;
+}
+
+.highscores tr:hover td {
+	background: #3c005a;
+	color: #e2e4ed;
+}

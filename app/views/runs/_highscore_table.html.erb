@@ -1,0 +1,15 @@
+<% if scores.length > 0 %>
+<table class="highscores">
+	<% scores[0..5].each do |score| %>
+	<tr>
+		<td class="handle"><%= render partial: "users/handle", locals: {user: score.user} %></td>
+		<td class="points"><%= score.score %> (<%= score.dots %>)</td>
+		<td class="duration"><%= score.duration[:diff] %></td>
+	</tr>
+	<% end %>
+</table>
+<% else %>
+<div>
+	<p>Couldn't find any highscores! That sucks! :(</p>
+</div>
+<% end %>

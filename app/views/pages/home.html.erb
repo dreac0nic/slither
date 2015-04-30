@@ -1,5 +1,7 @@
 <% if current_user %>
 
+<%= render partial: "runs/highscore_table", locals: {scores: @highscores} %>
+
 <%= render partial: "posts/form", locals: {post: @new_post} %>
 
 <div>
