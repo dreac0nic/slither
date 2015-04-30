@@ -124,6 +124,9 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
+    time_diff (0.3.0)
+      activesupport
+      i18n
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -152,6 +155,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   sqlite3
+  time_diff
   turbolinks
   tzinfo-data
   uglifier (>= 1.3.0)

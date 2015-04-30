@@ -10,9 +10,7 @@ class SessionsController < ApplicationController
 
 			redirect_to root_url, :notice => "Logged in!"
 		else
-			flash.now.alert = "NOPE YOU DUMB"
-
-			render "new"
+			redirect_to root_url, :notice => "Incorrect user information!"
 		end
 	end
 
