@@ -23,11 +23,12 @@
         <% if current_user %>
         <%= render partial: "users/avatar", locals: {user: current_user, editable: true} %>
         <div id="account_info">
-          <p><%= render partial: "users/handle", locals: {user: current_user} %></p>
-          <p>LOL YOU'RE A GREAT USER GUY. GOOD STUFF! <%= link_to "logout", logout_path %></p>
+          <p class="account_info-name"><%= render partial: "users/handle", locals: {user: current_user} %></p>
+          <p><%= link_to "logout", logout_path, :class => "login" %></p>
         </div>
         <% else %>
-        <p style="text-align: center;">You are not logged in, please <%= link_to "signup", signup_path %> or <%= link_to "login", login_path %> to join the SLITHER community!</p>
+        <p><%= link_to "signup", signup_path, :class => "login" %></p>
+        <p><%= link_to "login", login_path, :class => "login" %></p>
         <% end %>
       </div>
 

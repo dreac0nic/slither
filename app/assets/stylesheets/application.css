@@ -64,7 +64,7 @@ body {
 #header {
   position: relative;
 
-  height: 220px;
+  height: 200px;
 
   margin-top: 0px;
   padding: 4px 10px;
@@ -90,27 +90,65 @@ body {
 }
 
 #user_navigation {
-  width: 500px;
+  position: absolute;
+  top: 12px;
+  right: -2px;
+  width: 200px;
   height: 65px;
 
-  border: 1px solid #b3b3bb;
-  border-radius: 6px;
+  transform: rotate(2deg);
+
+  border-radius: 6px 0px 0px 6px;
   padding: 4px 8px;
 
-  background: #e4f6f5;
+  box-shadow: 4px 4px 2px 2px #221409;
+
+  background: #b2c9f9;
+
+  text-align: right;
 }
 
 #user_navigation img {
-  float: left;
+  float: right;
 }
 
 #user_navigation #account_info {
-  margin-left: 74px;
+  margin-right: 74px;
+}
+
+#user_navigation .account_info-name {
+  font-size: 1.3em;
+}
+
+#user_navigation p {
+  margin: 4px 2px;
+  padding: 0px;
 }
 
 #user_navigation #account_info p {
   margin: 0px;
-  padding: 0px;
+}
+
+#user_navigation a.login {
+  background: #079700;
+
+  padding: 2px 6px;
+
+  border-radius: 6px;
+
+  box-shadow: 2px 2px #020e01;
+
+  color: #e5fae4;
+
+  text-decoration: none;
+
+  font-family: "Open Sans", Sans;
+  font-weight: 600;
+}
+
+#user_navigation a.login:hover {
+  background: #e5fae4;
+  color: #079700;
 }
 
 #home_button {
