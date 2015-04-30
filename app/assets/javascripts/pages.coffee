@@ -102,6 +102,7 @@ class Game
 		@score = 0
 		@collected = 0
 		@multipliers = [1, 1]
+		@game_start_time = (new Date()).getTime()
 
 		@dots = []
 		@snake = new Snake(new Point(Math.floor(@width/2), Math.floor(@height/2)))
@@ -114,6 +115,7 @@ class Game
 		@score = 0
 		@collected = 0
 		@multipliers = [1, 1]
+		@game_start_time = (new Date()).getTime()
 
 		@collect_time = -1;
 
@@ -143,6 +145,7 @@ class Game
 		switch @state
 			when "menu"
 				if @continue
+					this.reset()
 					@state = "game"
 					@continue = false
 					@first_draw = true
@@ -157,8 +160,11 @@ class Game
 						url: "/runs/",
 						data: {
 								run: {
+									started_on_ms: @game_start_time,
+									finished_on_ms: (new Date()).getTime(),
 									score: @score,
-									dots: @collected }}
+									dots: @collected,
+									completed: false }}
 					})
 
 				@dots.push(new Point(Math.floor(Math.random()*@width), Math.floor(Math.random()*@height))) if @dots.length < @dot_quota
@@ -200,6 +206,7 @@ class Game
 				# Update UI elements.
 				document.getElementById("points").innerHTML = "" + @score
 				document.getElementById("multiplier").innerHTML = "x" + @multipliers[@multipliers.length - 1]
+
 			when "gameover"
 				if @continue
 					this.reset()

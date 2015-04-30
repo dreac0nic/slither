@@ -1,5 +1,5 @@
 <% @runs.each do |run| %>
 <div>
-	<%= run.user_id %> -- <%= run.score %>
+	<%= run.user.handle %> -- <%= run.score %> (<%= run.dots %>) -- <%= run.completed %> -- <%= run.duration[:diff] %>
 </div>
 <% end %>
