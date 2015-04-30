@@ -32,8 +32,6 @@ class Snake
 		for i in [0...length]
 			@segments.push(new Point(spawn_pos.x, spawn_pos.y))
 
-		@old_segment = this.tail()
-
 	head: () ->
 		@segments[0]
 
@@ -73,7 +71,7 @@ class Snake
 
 	draw: (context, size = 10) ->
 		context.fillStyle = "black"
-		context.fillRect(@old_segment.x*size, @old_segment.y*size, size, size)
+		context.fillRect(@old_segment.x*size, @old_segment.y*size, size, size) if @old_segment?
 
 		for segment in @segments
 			context.fillStyle = "white"
