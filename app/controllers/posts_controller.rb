@@ -14,9 +14,9 @@ class PostsController < ApplicationController
 		@post.user_id = current_user.id
 
 		if @post.save
-			redirect_to posts_url, notice: "Post successfully created!"
+			redirect_to root_url
 		else
-			render :new
+			redirect_to root_url, notice: "Could not save post!"
 		end
 	end
 

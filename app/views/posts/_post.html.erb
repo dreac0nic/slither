@@ -1,0 +1,7 @@
+<div class="post">
+	<div class="post-avatar"><%= render partial: "users/avatar", locals: {user: post.user, editable: false} %></div>
+	<div class="post-content">
+		<h4><%= render partial: "users/handle", locals: {user: post.user} %></h4>
+		<p><%= post.body %></p>
+	</div>
+</div>
