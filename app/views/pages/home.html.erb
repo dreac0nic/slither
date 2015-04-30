@@ -1,7 +1,6 @@
 <% if current_user %>
-<div>
-	<%= render partial: "posts/form", locals: {post: @new_post} %>
-</div>
+
+<%= render partial: "posts/form", locals: {post: @new_post} %>
 
 <div>
 	<% @posts.each do |post| %>
