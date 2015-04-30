@@ -5,6 +5,5 @@ class PagesController < ApplicationController
   end
 
   def game
-    @new_run = Run.new
   end
 end
