@@ -57,20 +57,23 @@
 }
 
 .post-form input[type="text"] {
-	width: 89%;
+	width: 88%;
 	height: 24px;
 
 	margin: 0px;
 	border: 0px;
 	border-radius: 6px;
+	padding: 2px 4px;
 }
 
 .post-form input[type="submit"] {
 	position: relative;
-	top: 3px;
+	top: 2px;
 	background: #5763ea;
 	width: 10%;
 	height: 26px;
+
+	box-shadow: 1px 1px #010311;
 
 	margin: 0px;
 	margin-top: 2px;
