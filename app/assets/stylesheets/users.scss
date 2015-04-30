@@ -7,7 +7,14 @@
 }
 
 .avatar.editable:hover {
-	opacity: 0.2;
+}
+
+.avatar.editable span.grav-message {
+	display: none;
+}
+
+.avatar.editable:hover span.grav-message {
+	display: inline-block;
 }
 
 .username {
