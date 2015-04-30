@@ -13,6 +13,12 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def show
+		@user = User.find_by handle: params[:handle]
+
+		redirect_to root_url, :notice => "That user does not exist!" if not @user
+	end
+
 	private
 
 	def user_params
