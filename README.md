@@ -26,16 +26,16 @@ severe lack of features!
 
 ### Current
 
- - User accounts, enabling login/logout and signup w/ secure password management.
- - Pulling gravatar images for profile pictures via given email.
-
-### In-Progress
  - The classic Nokia game, Snake!, playable right in your browser!
- - User accounts, allowing you to customize your Slither profile like you want!
- - Friends lists. Add and remove your best friends and compete against your personal list!
+ - User accounts, enabling login/logout and signup w/ secure password management.
  - Message feed that allows you to view other posts by most popular, peers, and friends!
  - Keep your friends updated with both your Snake life and your real life, all in one place!
+ - Pulling gravatar images for profile pictures via given email.
  - Highscore tracking, personal records, stats, and global/local leaderboards!
+
+### In-Progress
+ - User accounts, allowing you to customize your Slither profile like you want!
+ - Friends lists. Add and remove your best friends and compete against your personal list!
 
 ### Stretch Goals
  - Recorded demos of gameplay.
