@@ -113,6 +113,42 @@ body {
   padding: 0px;
 }
 
+#home_button {
+  position: absolute;
+  right: 222px; bottom: 4px;
+  height: 87px;
+
+  padding: 0px;
+  border-radius: 4px;
+
+  background: #8600ed;
+
+  box-shadow: 1px 1px 1px 1px #0d0316;
+
+  text-align: center;
+}
+
+#home_button img {
+  opacity: 0.6;
+}
+
+#home_button a {
+  position: relative;
+  display: inline-block;
+
+  padding: 7px 4px;
+
+  text-decoration: none;
+}
+
+#home_button a:hover {
+  color: #cca3f5;
+}
+
+#home_button:hover {
+  background: #cca3f5;
+}
+
 #play_button {
   position: absolute;
   right: 8px; bottom: 4px;

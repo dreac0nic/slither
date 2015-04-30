@@ -1,13 +1,9 @@
-<div>
-	<h3>You found the homepage of user <span class="username"><%= link_to @user.handle, user_path(@user.handle) %></span>!</h3>
-</div>
+<%= render partial: "runs/highscore_table", locals: {scores: @user.runs.order("score DESC")[0..5]} %>
 
 <div id="posts">
 	<% if not @user.posts.empty? %>
 	<% @user.posts.each do |post| %>
-	<div class="post">
-		<%= post.body %>
-	</div>
+	<%= render partial: "posts/post", locals: {post: post} %>
 	<% end %>
 	<% else %>
 	<p>This user has no posts. :(</p>
