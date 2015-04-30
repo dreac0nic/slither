@@ -2,11 +2,11 @@ class PostsController < ApplicationController
 	before_filter :user_signed_in?, :only => [:new, :create, :destroy]
 
 	def index
-		@posts = Post.all
+		redirect_to root_url
 	end
 
 	def new
-		@post = Post.new
+		redirect_to root_url
 	end
 
 	def create
@@ -21,7 +21,19 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@post = Post.find(params[:id])
+		redirect_to root_url
+	end
+
+	def edit
+		redirect_to root_url
+	end
+
+	def update
+		redirect_to root_url
+	end
+
+	def destroy
+		redirect_to root_url
 	end
 
 	private
