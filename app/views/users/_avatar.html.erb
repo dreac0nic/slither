@@ -1,0 +1,4 @@
+<% avatar_class = "avatar" %>
+<% avatar_class += " editable" if editable %>
+
+<%= link_to image_tag(user.avatar_url, :class => avatar_class, :width => "64", :height => "64"), editable ? "http://en.gravatar.com/" : user_path(user.handle) %>

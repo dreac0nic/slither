@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
 
 	has_many :posts
 
+	def avatar_url
+		"http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase.strip)}"
+	end
+
 	def self.authenticate(handle, password)
 		user = find_by_handle(handle)
 
