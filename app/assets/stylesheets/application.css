@@ -102,8 +102,6 @@ body {
 
 #user_navigation img {
   float: left;
-
-  border-radius: 4px;
 }
 
 #user_navigation #account_info {
@@ -113,31 +111,6 @@ body {
 #user_navigation #account_info p {
   margin: 0px;
   padding: 0px;
-}
-
-.username {
-  font-family: "Ravi Prakash", "Open Sans", Sans;
-  font-size: 1.15em;
-  font-bold: 900;
-
-  text-shadow: 1px 1px #301313;
-
-  color: #ab2727;
-}
-
-.username a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.username a:visited {
-  color: inherit;
-  text-decoration: none;
-}
-
-.username a:hover {
-  color: #da5826;
-  text-decoration: underline;
 }
 
 #play_button {

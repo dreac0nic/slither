@@ -1,8 +1,17 @@
+<% if current_user %>
+<div>
+	<%= render partial: "posts/form", locals: {post: @new_post} %>
+</div>
+
 <div>
 	<% @posts.each do |post| %>
-	<div class="post">
-		<h4 class="username"><%= link_to post.user.handle, user_path(post.user.handle) %></h4>
-		<p><%= post.body %></p>
-	</div>
+	<%= render partial: "posts/post", locals: {post: post} %>
 	<% end %>
 </div>
+<% else %>
+<div>
+	<% @posts.each do |post| %>
+	<%= render partial: "posts/post", locals: {post: post} %>
+	<% end %>
+</div>
+<% end %>
