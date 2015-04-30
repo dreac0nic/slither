@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div>
+	<% @posts.each do |post| %>
+	<div class="post">
+		<h4 class="username"><%= link_to post.user.handle, user_path(post.user.handle) %></h4>
+		<p><%= post.body %></p>
+	</div>
+	<% end %>
+</div>
