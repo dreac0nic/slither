@@ -1,10 +1,10 @@
-<h1>Log In</h1>
+<div>
+	<%= form_tag sessions_path do %>
+	<div class="login_form">
+		<p><%= label_tag :handle %> <%= text_field_tag :handle, params[:handle] %></p>
+		<p><%= label_tag :password %> <%= password_field_tag :password, params[:password] %></p>
 
-<%= form_tag sessions_path do %>
-<div class="login_form">
-	<p><%= label_tag :handle %> <%= text_field_tag :handle, params[:handle] %></p>
-	<p><%= label_tag :password %> <%= password_field_tag :password, params[:password] %></p>
-
-	<p class="button"><%= submit_tag %></p>
+		<p class="button"><%= submit_tag "LOGIN" %></p>
+	</div>
+	<% end %>
 </div>
-<% end %>

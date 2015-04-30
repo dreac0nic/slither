@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	before_filter :redirect_to_root, :only => [:index, :edit, :upate, :destroy]
+
 	def new
 		@user = User.new
 	end
@@ -23,5 +25,9 @@ class UsersController < ApplicationController
 
 	def user_params
 		params.require(:user).permit(:handle, :email, :password, :password_confirmation)
+	end
+
+	def redirect_to_root
+		redirect_to root_url
 	end
 end

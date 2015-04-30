@@ -1,24 +1,24 @@
-<h1>Sign Up</h1>
+<div>
+	<%= form_for @user do |form| %>
+	<div class="user_form">
+		<% if @user.errors.any? %>
+		<div class="error_messages">
+			<h2>Form is invalid.</h2>
 
-<%= form_for @user do |form| %>
-<div class="user_form">
-	<% if @user.errors.any? %>
-	<div class="error_messages">
-		<h2>Form is invalid.</h2>
+			<ul>
+				<% for message in @user.errors.full_messages %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
 
-		<ul>
-			<% for message in @user.errors.full_messages %>
-			<li><%= message %></li>
-			<% end %>
-		</ul>
+		<p><%= form.label :handle %> <%= form.text_field :handle %></p>
+		<p><%= form.label :email %> <%= form.text_field :email %></p>
+		<p><%= form.label :password %> <%= form.password_field :password %></p>
+		<p><%= form.label :password_confirmation %> <%= form.password_field :password_confirmation %></p>
+
+		<p class="button"><%= form.submit %></p>
 	</div>
 	<% end %>
-
-	<p><%= form.label :handle %> <%= form.text_field :handle %></p>
-	<p><%= form.label :email %> <%= form.text_field :email %></p>
-	<p><%= form.label :password %> <%= form.password_field :password %></p>
-	<p><%= form.label :password_confirmation %> <%= form.password_field :password_confirmation %></p>
-
-	<p class="button"><%= form.submit %></p>
 </div>
-<% end %>

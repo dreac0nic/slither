@@ -1,3 +1,37 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.login_form {
+	padding: 4px 12px;
+}
+
+.login_form p.button {
+	text-align: right;
+}
+
+.login_form input[type="submit"] {
+	position: relative;
+	top: 2px;
+	background: #5763ea;
+	height: 26px;
+
+	box-shadow: 1px 1px #010311;
+
+	margin: 2px 4px;
+	padding: 2px 4px;
+	border: 0px;
+	border-radius: 6px;
+
+	color: #f2f3ff;
+
+	font-family: "Open Sans", Sans;
+	font-size: 1.1em;
+	font-weight: 700;
+}
+
+.login_form input[type="submit"]:hover {
+	background: #f2f3ff;
+
+	color: #5763ea;
+}
