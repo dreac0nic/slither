@@ -154,6 +154,15 @@ class Game
 					@continue = false
 					@state = "gameover"
 
+					$.ajax ({
+						type: "POST",
+						url: "/runs/",
+						data: {
+								run: {
+									score: @score,
+									dots: @collected }}
+					})
+
 				@dots.push(new Point(Math.floor(Math.random()*@width), Math.floor(Math.random()*@height))) if @dots.length < @dot_quota
 
 				# Test to see if the snake has grabbed a dot!
