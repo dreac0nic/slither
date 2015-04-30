@@ -125,6 +125,21 @@ body {
   color: #ab2727;
 }
 
+.username a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.username a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.username a:hover {
+  color: #da5826;
+  text-decoration: underline;
+}
+
 #play_button {
   position: absolute;
   right: 8px; bottom: 4px;
