@@ -143,12 +143,13 @@ body {
 }
 
 #play_button a:hover {
-  left: 3px; top: 2px;
   color: #ff9b8a;
 }
 
 #play_button:hover {
-  box-shadow: inset 3px 2px #2d140a;
+  background: #faf1ee;
+
+  color: #eb4f00;
 }
 
 #content {
